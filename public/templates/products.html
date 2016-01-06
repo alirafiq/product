@@ -1,0 +1,23 @@
+
+
+<section>
+
+
+    <div class="list-group">
+     <div class="col-lg-4" ng-repeat="product in products">
+            <a href="/#/product/{{product._id}}">
+                <img style="max-width: 100%" src="{{product.image}}" alt="{{product.name}}"/>
+            </a>
+         <br/>
+         <a href="/#/product/{{product._id}}">
+            <span >{{product.name}} </span>
+             </a >
+         <br/>
+         <span >{{product.price}}  </span>
+
+     </div>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="products.length">
+        No Products yet, why don't you <a ui-sref="addProduct">create one</a>?
+    </div>
+</section>

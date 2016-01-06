@@ -1,0 +1,27 @@
+<section>
+    <div class="page-header">
+        <h1>{{title}}</h1>
+        <div class="alert alert-warning text-center">
+            <a ui-sref="product">Product List</a>
+        </div>
+        <div class="alert alert-success text-center">
+            <a ui-sref="addCategory">Add Category</a>
+        </div>
+    </div>
+
+    <div class="list-group">
+        <table class="table table-bordered">
+            <tr>
+                <th>Name</th>
+                <th>description</th>
+            </tr>
+            <tr ng-repeat="item in categories">
+                <td>{{item.name}}</td>
+                <td>{{item.description}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="categories.length">
+        No categoriess yet, why don't you <a ui-sref="addCategory">create one</a>?
+    </div>
+</section>

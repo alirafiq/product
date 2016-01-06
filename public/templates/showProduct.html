@@ -1,0 +1,68 @@
+<style>
+    td{
+        padding: 5px;
+        background-color: #cccccc;
+        border: 2px solid #eeeeee;
+    }
+</style>
+<section>
+
+
+    <div class="list-group">
+        <div class="col-lg-7" >
+                <img style="max-width: 100%" src="{{products.image}}" alt="{{product.name}}"/>
+            <br/>
+            <span><h2>
+     <strong>
+            {{products.name}}
+                </strong>
+            -
+                    <em>{{products.price}}
+</em>
+                </h2>
+            </span>
+            </div>
+        </div>
+
+    </section>
+<hr/>
+<section>
+    <div class="col-lg-6">
+        <form class="form-horizontal" data-ng-submit="addComments(desc,comments.$valid)" name="comments" novalidate>
+            <div class="form-group">
+                <label class="control-label" for="name">Name</label>
+                <div class="controls">
+                    <input type="text" name="name" data-ng-model="desc.name" id="name" class="form-control" placeholder="Name" required>
+                </div>
+                <div class="help-block" ng-messages="comments.name.$error" ng-if="comments.name.$touched">
+                    <p ng-message="required" class="alert-danger">Your name is required.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="comment">Comments</label>
+                <div class="controls">
+                    <textarea type="text" name="comment" data-ng-model="desc.comment" id="comment" class="form-control" placeholder="Comments" required></textarea>
+                </div>
+                <div class="help-block" ng-messages="comments.comment.$error" ng-if="comments.comment.$touched">
+                    <p ng-message="required" class="alert-danger">Your comment is required.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-default">
+            </div>
+        </form>
+    </div>
+
+    <div class="list-group col-lg-7">
+    <table>
+        <tr>
+            <th>Name-Date</th>
+            <th>Comments</th>
+        </tr>
+        <tr ng-repeat="comment in comments">
+            <td width="30%">{{comment.name}}<br/><span style="font-size: 10px"> {{comment.dated}}</span></td>
+            <td width="70%">{{comment.comment}}</td>
+        </tr>
+    </table>
+    </div>
+</section>

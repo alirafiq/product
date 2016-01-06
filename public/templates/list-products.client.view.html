@@ -1,0 +1,41 @@
+<section>
+    <div class="page-header">
+        <h1>{{title}}</h1>
+        <div class="alert alert-warning text-center">
+            <a ui-sref="category">Category List</a>
+        </div>
+        <div class="alert alert-success text-center">
+          <a ui-sref="addProduct">Add Product</a>
+        </div>
+    </div>
+
+    <div class="list-group">
+        <table class="table table-bordered">
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Tax</th>
+                <th>Category</th>
+                <th>MinQuantity</th>
+                <th>MaxQuantity</th>
+                <th>Markup</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr ng-repeat="product in products">
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.tax}}</td>
+                <td>{{product.category.name}}</td>
+                <td>{{product.minQuantity}}</td>
+                <td>{{product.maxQuantity}}</td>
+                <td>{{product.markup}}</td>
+                <td><a href="/#/editProduct/{{product._id}}">Edit</a></td>
+                <td><a ng-click="delete(product._id)">Delete</a></td>
+            </tr>
+        </table>
+  </div>
+    <div class="alert alert-warning text-center" data-ng-hide="products.length">
+    	No Products yet, why don't you <a ui-sref="addProduct">create one</a>?
+    </div>
+</section>

@@ -1,0 +1,90 @@
+<section>
+    <div class="page-header">
+        <h1>New Product</h1>
+        <div class="alert alert-success text-center">
+            <a ui-sref="product">Product list</a>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" enctype="multipart/form-data" name="products" data-ng-submit="addProduct(product, products.$valid)">
+            <fieldset>
+                 <div class="form-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="product.name" required id="name" name="name" class="form-control" placeholder="Name">
+                    </div>
+                     <div class="help-block" ng-messages="products.name.$error" ng-if="products.name.$touched">
+                         <p ng-message="required" class="alert-danger">Your name is required.</p>
+                     </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="category">Category</label>
+                    <div class="controls">
+                        <select required
+                                data-ng-model="product.category._id"
+                                name="category"
+                                class="form-control"
+                                placeholder="Category"
+                                ng-options="item._id as item.name for item in categoriesList"
+                                id="category"
+                                >
+                            <option value="">Select Category</option>
+                        </select>
+                        <!--<select required data-ng-model="product.category" name="category" class="form-control" id="category" placeholder="Category">
+                            <option value="">Select Category</option>
+                            <option value="{{item}}" ng-repeat="item in categoriesList">{{item.name}}</option>
+                        </select>-->
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="price">Price</label>
+                    <div class="controls">
+                        <input type="text" required data-ng-model="product.price" id="price" name="price" class="form-control" placeholder="Unit Price">
+                    </div>
+                    <div class="help-block" ng-messages="products.price.$error" ng-if="products.price.$touched">
+                        <p ng-message="required" class="alert-danger">Your price is required.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="minQuantity">Min Quanity</label>
+                    <div class="controls">
+                        <input type="text" name="minQuantity" required data-ng-model="product.minQuantity" id="minQuantity" class="form-control" placeholder="minimum Quantity">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="maxQuantity">Max Quanity</label>
+                    <div class="controls">
+                        <input type="text" name="maxQuantity" data-ng-model="product.maxQuantity" id="maxQuantity" class="form-control" placeholder="max Quantity" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="tax">Tax</label>
+                    <div class="controls">
+                        <input type="text" name="tax" data-ng-model="product.tax" id="tax" class="form-control" placeholder="Tax" required>
+                    </div>
+                    <div class="help-block" ng-messages="products.tax.$error" ng-if="products.tax.$touched">
+                        <p ng-message="required" class="alert-danger">Your tax is required.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="markup">Markup</label>
+                    <div class="controls">
+                        <input type="text" name="markup" data-ng-model="product.markup" id="markup" class="form-control" placeholder="Markup" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="image" >Image</label>
+                    <div class="controls">
+                        <input type="file" name="image" file-input="image" file-model="myFile" data-ng-model="product.image" id="image" class="form-control" placeholder="image"   >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-default">
+                </div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+            </fieldset>
+        </form>
+    </div>
+</section>
